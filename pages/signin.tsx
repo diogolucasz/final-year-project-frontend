@@ -3,6 +3,7 @@ import { redirect } from "next/dist/server/api-utils";
 import { parseCookies } from "nookies";
 import { FormEvent, useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext";
+import { withSSRGuest } from "../utilities/withSSRGuest";
 
 export default function SignIn() {
 
@@ -33,21 +34,9 @@ export default function SignIn() {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps = withSSRGuest(async (ctx) => {
 
-    const cookies = parseCookies(ctx);
-
-    if (cookies['fyp.token']) {
-
-        return {
-            redirect: {
-                destination: '/dashboard',
-                permanent: false,
-            }
-        }
-    }
-
-    return{
+    return {
         props: {}
     }
-}
+});

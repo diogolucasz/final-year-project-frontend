@@ -1,6 +1,3 @@
-import { GetServerSideProps } from "next";
-import { redirect } from "next/dist/server/api-utils";
-import { parseCookies } from "nookies";
 import { FormEvent, useContext, useState } from "react"
 import { AuthContext } from "../context/AuthContext";
 import { withSSRGuest } from "../utilities/withSSRGuest";
@@ -10,7 +7,7 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const { SignIn } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
 
     async function handleSubmit(event: FormEvent) {
 
@@ -21,7 +18,7 @@ export default function SignIn() {
             password
         }
 
-        await SignIn(data);
+        await signIn(data);
 
     }
 

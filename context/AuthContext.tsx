@@ -16,7 +16,8 @@ interface SignInData {
 }
 
 interface AuthContextData {
-    SignIn(data: SignInData): Promise<void>;
+    signIn: (data: SignInData) => Promise<void>;
+    signOut: () => void;
     user: User;
     isAuthenticated: boolean;
 }
@@ -27,10 +28,14 @@ interface AuthProviderProps {
 
 export const AuthContext = createContext({} as AuthContextData)
 
+let authChannel: BroadcastChannel;
+
 export function signOut() {
 
     destroyCookie(undefined, 'fyp.token')
     destroyCookie(undefined, 'fyp.refreshToken')
+
+    authChannel.postMessage('signOut');
 
     Router.push('/signin')
 }
@@ -39,6 +44,22 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const [user, setUser] = useState<User>();
     const isAuthenticated = !!user;
+
+    useEffect(() => {
+
+        authChannel = new BroadcastChannel('auth');
+
+        authChannel.onmessage = (message) => {
+
+            switch (message.data) {
+                case 'signOut':
+                    signOut();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }, [])
 
     useEffect(() => {
 
@@ -53,16 +74,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 setUser({ email, permissions, roles })
 
             }).catch(() => {
-
                 signOut();
-
             })
         }
 
     }, [])
 
 
-    async function SignIn({ email, password }: SignInData) {
+    async function signIn({ email, password }: SignInData) {
 
         try {
 
@@ -94,12 +113,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
             Router.push('/dashboard')
 
         } catch (error) {
-            console.log(error)
+            alert(`${error}`)
         }
     }
 
+
     return (
-        <AuthContext.Provider value={{ SignIn, isAuthenticated, user }}>
+        <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>
             {children}
         </AuthContext.Provider>
     )

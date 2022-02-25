@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    background: blue;
+    background: var(--dark-blue);
     height: 5rem;
     position: fixed;
     display: flex;
     justify-content: center;
     width: 100%;
     top: 0px;
+
+    box-shadow: var(--dark-blue) 0px 1rem 1.25rem;
+
 `
 
 export const Content = styled.div`

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { useCan } from "../hook/useCan";
 
+
 interface CanProps {
     children: ReactNode;
     permissions?: string[];

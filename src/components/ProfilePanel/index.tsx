@@ -6,7 +6,7 @@ export function ProfilePanel() {
 
     return (
         <Panel>
-            <Container>
+            <Container className="left-column">
                 <div className="profile-cover"></div>
                 <img
                     src="https://github.com/guilhermerodz.png"
@@ -16,7 +16,10 @@ export function ProfilePanel() {
                 <h1>Guilherme Rodz</h1>
                 <h2>Software Engineer @ Rocketseat</h2>
 
-                <div className="separator"></div>
+                <div className="separator"/>
+                <section>
+                    
+                </section>
 
                 <div className="key-value">
                     <span className="key">Quem viu seu perfil</span>

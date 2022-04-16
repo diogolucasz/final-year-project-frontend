@@ -4,8 +4,14 @@ export const GlobalStyle = createGlobalStyle`
     
     :root {
         --dark-blue: #061121;
-        --blue-900: #010917;
-        --gray-100: #f4f4f4;
+        --blue-900: #0b1426;
+        --blue-700: #122036;
+        --blue-background: #0d1117;
+        --blue-300: #1199fa;
+        --gray-100: #d1d0d1;
+        --rosa: #E82D92;
+        --background: #202024;
+        --white: #f4f4f4;
     }
     
     * {
@@ -16,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
         min-height: 100%;
-        background: var( --blue-900);
+        background: var(--blue-900);
     }
 
     *, button, input {

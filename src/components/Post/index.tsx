@@ -4,45 +4,37 @@ import React from 'react';
 import { Container } from './styles';
 
 
-export interface Teacher {
+export interface Post {
     id: number;
-    avatar: string;
-    bio: string;
-    cost: number;
     name: string;
-    subject: string;
-    whatsapp: string;
+    owner: Owner;
+    //description: string;
+    // user_id: string;
+
 }
 
-interface TeacheItemProps {
-    teacher: Teacher;
+interface Owner {
+    id: number;
+    login: string
 }
 
-export function Post() {
-    // function createNewConnection() {
-    //     api.post('connections', {
-    //         user_id: teacher.id
-    //     });
-    // }
-
+export function Post({ id, owner, name }: Post) {
+    
     return (
         <Container>
             <header>
                 {/* <img src={teacher.avatar} alt={teacher.name} /> */}
-                <img src="https://github.com/guilhermerodz.png" alt="<dasasdsasda" />
+                {/* <img src="https://github.com/guilhermerodz.png" alt="<dasasdsasda" /> */}
                 <div>
                     {/* <strong>{teacher.name}</strong> */}
-                    <strong>Diogo</strong>
+                    <strong>{owner.id}</strong>
                     {/* <span>{teacher.subject}</span> */}
-                    <span>Engenharia Informatica</span>
+                    <span>{name}</span>
                 </div>
             </header>
             {/* <p>{teacher.bio}</p> */}
             <div>
-                <p>ADSUIHHASD9UHDASOIHA</p>
-                <p>ADSUIHHASD9UHDASOIHAASDHOISADH</p>
-                <p>ADSUIHHASD9HADSOIHADSOIHASDOIASDHOISADH</p>
-                <p>ADSDHOISADH</p>
+                <p>descricao</p>
             </div>
             <footer>
                 <p>

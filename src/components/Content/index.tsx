@@ -1,31 +1,26 @@
-import { Post } from "../Post";
+import { PostItem } from "../Post";
 import { Container } from "./style";
 
-export interface PostProps {
-	posts: [
-		post: {
-			id: number;
-			name: string;
-			owner: Owner;
-			description: string;
-			// user_id: string;
-		}
-	]
-
-}
-
-interface Owner {
+export interface Post {
 	id: number;
-	login: string
+	message: string;
+	subject: string;
+	user_id: string;
+	// owner: Owner;
 }
 
-export default function Content({posts}: Post[]) {
+// interface Owner {
+// 	id: number;
+// 	login: string
+// }
+
+export default function Content(posts: Post[]) {
 
 	return (
 		<Container >
-			{posts.map(post => (
-				<Post key={post.id} {...post} />
-			))}
+			{/* {posts.map(post => (
+				<PostItem key={post.id} {...post} />
+			))} */}
 		</Container>
 	)
 }

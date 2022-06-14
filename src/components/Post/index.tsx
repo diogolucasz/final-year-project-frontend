@@ -1,25 +1,22 @@
 import React from 'react';
-// import whatsapp from '../../assets/images/icons/whatsapp.svg';
-//import api from '../../services/api';
 import { Container } from './styles';
 
 
 export interface Post {
     id: number;
-    name: string;
-    owner: Owner;
-    //description: string;
-    // user_id: string;
-
+    message: string;
+    subject: string;
+    user_id: string;
+    // owner: Owner;
 }
 
-interface Owner {
-    id: number;
-    login: string
-}
+// interface Owner {
+//     id: number;
+//     login: string
+// }
 
-export function Post({ id, owner, name }: Post) {
-    
+export function PostItem({ id, message, subject, user_id }: Post) {
+
     return (
         <Container>
             <header>
@@ -27,14 +24,14 @@ export function Post({ id, owner, name }: Post) {
                 {/* <img src="https://github.com/guilhermerodz.png" alt="<dasasdsasda" /> */}
                 <div>
                     {/* <strong>{teacher.name}</strong> */}
-                    <strong>{owner.id}</strong>
-                    {/* <span>{teacher.subject}</span> */}
-                    <span>{name}</span>
+                    <strong>{id}</strong>
+                    <span>{subject}</span>
+                    <span>{user_id}</span>
                 </div>
             </header>
             {/* <p>{teacher.bio}</p> */}
             <div>
-                <p>descricao</p>
+                <p>{message}</p>
             </div>
             <footer>
                 <p>

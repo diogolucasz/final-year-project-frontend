@@ -1,30 +1,35 @@
 import { useQuery } from "react-query";
+import { api } from "../apiClient";
 
-export interface Post {
-	post: {
-		id: number;
-		name: string;
-		owner: Owner;
-		description: string;
-		// user_id: string;
-	}
-}
-
-interface Owner {
+interface Post {
 	id: number;
-	login: string
+	message: string;
+	subject: string;
+	user_id: string;
+	// owner: Owner;
 }
 
-async function getPosts():Promise<Post[]> {
+export async function getPosts(): Promise<Post[]> {
 
-    const response = await fetch('https://api.github.com/users/diogolucasz/repos');
+	const { data } = await api.get('posts')
 
-    const data = await response.json();
+	//const data = await response.json();
+	// console.log(data)
 
-    return data;
+	console.log(data)
 
+	const posts = data.map(post => {
+		return {
+			id: post.id,
+			subject: post.subject,
+			message: post.message,
+			user_id: post.user_id
+		}
+	})
+
+	return posts;
 }
 
 export function useFetchPosts() {
-    return useQuery('posts', getPosts)
+	return useQuery('posts', getPosts)
 }

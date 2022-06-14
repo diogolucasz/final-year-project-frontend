@@ -1,4 +1,7 @@
 
+import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
+import { useEffect } from "react";
+import { useQuery } from "react-query";
 import Aside from "../../components/Aside";
 import Content from "../../components/Content";
 import { Header } from "../../components/Header";
@@ -9,6 +12,8 @@ import { Container } from "./styles";
 export default function Feed() {
 
 	const { data, isLoading, error } = useFetchPosts()
+
+	// console.log(data)
 
 	return (
 		<Container>
@@ -24,6 +29,7 @@ export default function Feed() {
 					<>
 						<h1>SUCESSO</h1>
 						<Content posts={data} />
+						
 					</>
 				)}
 
@@ -31,5 +37,3 @@ export default function Feed() {
 		</Container>
 	)
 }
-
-//https://www.youtube.com/watch?v=-fSHcMg5aZ8&list=PLLSLan7jhsAsMwIcv-Wp33n_wUZD3qN_R&index=1

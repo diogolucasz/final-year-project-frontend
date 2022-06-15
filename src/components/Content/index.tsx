@@ -1,3 +1,5 @@
+import { useQuery } from "react-query";
+import { api } from "../../services/apiClient";
 import { PostItem } from "../Post";
 import { Container } from "./style";
 
@@ -9,18 +11,32 @@ export interface Post {
 	// owner: Owner;
 }
 
-// interface Owner {
-// 	id: number;
-// 	login: string
-// }
+export default function Content() {
 
-export default function Content(posts: Post[]) {
+	const { data: posts, isLoading, error } = useQuery<Post[]>('posts', async () => {
+
+		const { data } = await api.get('posts')
+
+		//const data = await response.json()
+
+		console.log(data)
+		return data;
+	})
+
 
 	return (
 		<Container >
-			{/* {posts.map(post => (
-				<PostItem key={post.id} {...post} />
-			))} */}
+			{isLoading ? (
+				<h1>good</h1>
+			) : error ? (
+				<h1>errp</h1>
+			) : (
+				<>
+					{posts?.map(post => {
+						<PostItem key={post.id} {...post}/>
+					})}
+				</>
+			)}		
 		</Container>
 	)
 }

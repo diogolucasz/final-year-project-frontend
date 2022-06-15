@@ -7,7 +7,7 @@ import { api } from "../services/apiClient";
 
 import { withSSRAuth } from "../utilities/withSSRAuth";
 
-export default function Dashboard({ repositories }) {
+export default function Dashboard() {
 
     const { user, signOut } = useContext(AuthContext);
 
@@ -27,18 +27,25 @@ export default function Dashboard({ repositories }) {
 
     return (
         <>
-            {/* <Header />
+            <Header />
+            <></>
+            <h1>sdanikasdnidsainjdias</h1>
+            <h1>sdanikasdnidsainjdias</h1>
+            <h1>sdanikasdnidsainjdias</h1>
+            <h1>sdanikasdnidsainjdias</h1>
+            <h1>sdanikasdnidsainjdias</h1>
+            <hr />
             <h1>dashboard {user?.email}</h1>
             <button onClick={signOut}>Signout</button>
 
-            <Can permissions={['metrics.list']}>
+            {/* <Can permissions={['metrics.list']}>
                 <div>hehuehuehue</div>
             </Can> */}
-            <ul>
+            {/* <ul>
                 {repositories.map((repo: string) => (
                     <li key={repo}>{repo}</li>
                 ))}
-            </ul>
+            </ul> */}
 
         </>
     )
@@ -51,17 +58,17 @@ export default function Dashboard({ repositories }) {
 //     }
 // })
 
-export const getServerSideProps: GetServerSideProps = async () => {
+// export const getServerSideProps: GetServerSideProps = async () => {
 
-    const response = await fetch('https://api.github.com/users/diogolucasz/repos');
-    //console.log(response)
-    const data = await response.json();
-    //console.log(data)
-    const repositoryNames = data.map((item: string) => item.name)
+//     const response = await fetch('https://api.github.com/users/diogolucasz/repos');
+//     //console.log(response)
+//     const data = await response.json();
+//     //console.log(data)
+//     const repositoryNames = data.map((item: string) => item.name)
 
-    return {
-        props: {
-            repositories: repositoryNames
-        }
-    }
-}
+//     return {
+//         props: {
+//             repositories: repositoryNames
+//         }
+//     }
+// }

@@ -3,8 +3,6 @@ import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/apiClient";
 
-
-
 interface User {
     email: string;
     permissions: string[];
@@ -92,6 +90,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
             })
 
             const { token, refreshToken, permissions, roles } = response.data;
+
+            console.log(response.data)
 
             setUser({
                 email,

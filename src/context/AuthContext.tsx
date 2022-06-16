@@ -31,8 +31,8 @@ let authChannel: BroadcastChannel;
 
 export function signOut() {
 
-    destroyCookie(undefined, 'fyp.token')
-    destroyCookie(undefined, 'fyp.refreshToken')
+    destroyCookie(undefined, 'token')
+    destroyCookie(undefined, 'refreshToken')
 
     authChannel.postMessage('signOut');
 
@@ -62,11 +62,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     useEffect(() => {
 
-        const { 'fyp.token': token } = parseCookies();
+        const { 'token': token } = parseCookies();
 
         if (token) {
 
-            api.get('/me').then(response => {
+            api.get('/dsfds').then(response => {
 
                 const { email, permissions, roles } = response.data;
 
@@ -99,12 +99,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 roles,
             })
 
-            setCookie(undefined, 'fyp.token', token, {
+            setCookie(undefined, 'token', token, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
                 path: '/',
             });
 
-            setCookie(undefined, 'fyp.refreshToken', refreshToken, {
+            setCookie(undefined, 'refreshToken', refreshToken, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
                 path: '/',
             });

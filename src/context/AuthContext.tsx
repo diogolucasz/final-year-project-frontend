@@ -4,7 +4,9 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/apiClient";
 
 interface User {
-    email: string;
+    id?: string,
+    name?: string,
+    email: string,
     permissions: string[];
     roles: string[];
 }
@@ -31,8 +33,8 @@ let authChannel: BroadcastChannel;
 
 export function signOut() {
 
-    destroyCookie(undefined, 'token')
-    destroyCookie(undefined, 'refreshToken')
+    destroyCookie(undefined, 'fyp.token')
+    destroyCookie(undefined, 'fyp.refresh_token')
 
     authChannel.postMessage('signOut');
 
@@ -62,11 +64,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     useEffect(() => {
 
-        const { 'token': token } = parseCookies();
+        const { 'fyp.token': token } = parseCookies();
 
         if (token) {
 
-            api.get('/dsfds').then(response => {
+            api.get('/users/me').then(response => {
 
                 const { email, permissions, roles } = response.data;
 
@@ -79,7 +81,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     }, [])
 
-
     async function signIn({ email, password }: SignInData) {
 
         try {
@@ -89,22 +90,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 password,
             })
 
-            const { token, refreshToken, permissions, roles } = response.data;
-
-            console.log(response.data)
+            const { token, refresh_token, permissions, roles } = response.data;
 
             setUser({
                 email,
-                permissions,
                 roles,
+                permissions,
             })
 
-            setCookie(undefined, 'token', token, {
+            setCookie(undefined, 'fyp.token', token, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
                 path: '/',
             });
 
-            setCookie(undefined, 'refreshToken', refreshToken, {
+            setCookie(undefined, 'fyp.refresh_token', refresh_token, {
                 maxAge: 60 * 60 * 24 * 30, // 30 days
                 path: '/',
             });
@@ -117,7 +116,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
             alert(`${error}`)
         }
     }
-
 
     return (
         <AuthContext.Provider value={{ signIn, signOut, isAuthenticated, user }}>

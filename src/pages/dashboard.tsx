@@ -18,7 +18,7 @@ export default function Dashboard() {
     // useEffect(() => {
 
     //     api
-    //         .get('/me').then(response => console.log(response))
+    //         .get('/users/me').then(response => console.log(response))
     //         .catch(error => console.log(error));
 
     // }, [])
@@ -36,7 +36,9 @@ export default function Dashboard() {
             <h1>sdanikasdnidsainjdias</h1>
             <hr />
             <h1>dashboard {user?.email}</h1>
+            <h1>dashboard {user?.roles}</h1>
             <button onClick={signOut}>Signout</button>
+            {console.log(user)}
 
             {/* <Can permissions={['metrics.list']}>
                 <div>hehuehuehue</div>

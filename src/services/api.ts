@@ -23,11 +23,15 @@ export function setupAPIClient(ctx = undefined) {
     
         if (error.response?.status === 401) {
     
-            if (error.response.data?.code === 'token.expired') {
+            if (error.response.data?.message === 'Invalid token!') {
     
+                console.log('entrou aqui')
                 cookies = parseCookies(ctx);
     
-                const { 'fyp.refreshToken': refreshToken } = cookies
+                const { 'fyp.refresh_token': oldToken } = cookies
+                // const { 'fyp.token': token } = cookies
+
+                // console.log(refreshToken)
     
                 const originalConfig = error.config;
     
@@ -35,20 +39,21 @@ export function setupAPIClient(ctx = undefined) {
     
                     isRefreshing = true;
     
-                    api.post('/refresh', {
-    
-                        refreshToken,
-    
+                    api.post('/refresh-token', {
+                        token: oldToken,
+
                     }).then(response => {
     
-                        const { token } = response.data;
+                        // console.log(response)
+
+                        const { token, refresh_token } = response.data;
     
                         setCookie(ctx, 'fyp.token', token, {
                             maxAge: 60 * 60 * 24 * 30, // 30 days
                             path: '/',
                         });
     
-                        setCookie(ctx, 'fyp.refreshToken', response.data.refreshToken, {
+                        setCookie(ctx, 'fyp.refresh_token', refresh_token, {
                             maxAge: 60 * 60 * 24 * 30, // 30 days
                             path: '/',
                         });
@@ -63,6 +68,8 @@ export function setupAPIClient(ctx = undefined) {
                         failedRequestsQueue.forEach(request => request.reject(error));
                         failedRequestsQueue = [];
     
+                        console.log(error)
+
                         if (process.browser) {
                             signOut();
                         }

@@ -6,9 +6,9 @@ import { api } from "../services/apiClient";
 interface User {
     id?: string,
     name?: string,
-    email: string,
-    permissions: string[];
-    roles: string[];
+    email?: string,
+    permissions?: string[];
+    roles?: string[];
 }
 
 interface SignInData {
@@ -70,9 +70,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             api.get('/users/me').then(response => {
 
-                const { email, permissions, roles } = response.data;
+                const { email, name, permissions, roles } = response.data;
 
-                setUser({ email, permissions, roles })
+                setUser({ email,name, permissions, roles })
 
             }).catch(() => {
                 signOut();

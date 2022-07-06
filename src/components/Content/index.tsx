@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { api } from "../../services/apiClient";
+import { useFetch } from "../../services/hooks/useFetchPosts";
 import { PostItem } from "../Post";
 import { Container } from "./style";
 
@@ -11,18 +12,36 @@ export interface Post {
 	// owner: Owner;
 }
 
-export default function Content() {
+interface ContentProps {
+	posts: Post[],
+	isLoading: boolean,
+	error: string
+}
 
-	const { data: posts, isLoading, error } = useQuery<Post[]>('posts', async () => {
+export default function Content({posts,error,isLoading}:ContentProps) {
 
-		const { data } = await api.get('posts')
+	// const { data: posts, isLoading, error } = useQuery<Post[]>('posts', async () => {
 
-		//const data = await response.json()
+	// 	const { data } = await api.get('posts')
 
-		console.log(data)
-		return data;
-	})
+	// 	//const data = await response.json()
 
+	// 	console.log(data)
+	// 	return data;
+	// })
+
+	// const { data,error } = useFetch('posts')
+
+	// // console.log(posts?.data)
+
+	// const posts = data?.data;
+
+	// if(!posts) {
+	// 	console.log('EU')
+	// 	return <p>HUEHUEHUE</p>
+	// }
+
+	// const isLoading = !error && !posts
 
 	return (
 		<Container >
@@ -33,10 +52,10 @@ export default function Content() {
 			) : (
 				<>
 					{posts?.map(post => {
-						<PostItem key={post.id} {...post}/>
+						<PostItem key={post.id} {...post} />
 					})}
 				</>
-			)}		
+			)}
 		</Container>
 	)
 }

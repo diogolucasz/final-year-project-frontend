@@ -33,20 +33,20 @@ export default function Feed() {
 	// 	return <p>HUEHUEHUE</p>
 	// }
 
-	interface Repository {
-		id: string,
-		full_name: string
-	}
+	// interface Repository {
+	// 	id: string,
+	// 	full_name: string
+	// }
 
-	const [repository, setRepositories] = useState<Repository[]>([])
+	// const [repository, setRepositories] = useState<Repository[]>([])
 
-	useEffect(()=> {
-		fetch('https://api.github.com/users/diogolucasz/repos')
-		.then(response => response.json())
-		.then(data => {
-			setRepositories(data)
-		})
-	})
+	// useEffect(()=> {
+	// 	fetch('https://api.github.com/users/diogolucasz/repos')
+	// 	.then(response => response.json())
+	// 	.then(data => {
+	// 		setRepositories(data)
+	// 	})
+	// })
 
 	return (
 		<Container>

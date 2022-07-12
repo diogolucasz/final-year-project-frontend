@@ -1,11 +1,9 @@
 import { GetServerSideProps } from "next";
 import { useContext, useEffect, useState } from "react"
-import { Can } from "../components/Can";
-import { Header } from "../components/Header";
-import { AuthContext } from "../context/AuthContext"
-import { api } from "../services/apiClient";
-
-import { withSSRAuth } from "../utilities/withSSRAuth";
+import { Header } from "../../components/Header";
+import { AuthContext } from "../../context/AuthContext";
+import { setupAPIClient } from "../../services/api";
+import { withSSRAuth } from "../../utilities/withSSRAuth";
 
 export default function Dashboard() {
 
@@ -38,7 +36,7 @@ export default function Dashboard() {
             <h1>dashboard {user?.email}</h1>
             <h1>dashboard {user?.roles}</h1>
             <button onClick={signOut}>Signout</button>
-            {console.log(user)}
+            {/* {console.log(user)} */}
 
             {/* <Can permissions={['metrics.list']}>
                 <div>hehuehuehue</div>
@@ -53,12 +51,21 @@ export default function Dashboard() {
     )
 }
 
-// export const getServerSideProps = withSSRAuth(async (ctx) => {
+export const getServerSideProps = withSSRAuth(async (ctx) => {
 
-//     return {
-//         props: {}
-//     }
-// })
+    const apiClient = setupAPIClient(ctx);
+
+    const response = await apiClient.get('/users/me')
+
+    console.log(response.data)
+
+
+
+
+    return {
+        props: {}
+    }
+})
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 

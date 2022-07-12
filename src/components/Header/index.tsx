@@ -13,7 +13,10 @@ export function Header() {
     return (
         <Container>
             <Content>
-                <img src="/images/logo.png" height={80} alt="logo ISLA" />
+                <ActiveLink activeClassName="active" href='/feed'>
+
+                    <img src="/images/logo.png" height={80} alt="logo ISLA" />
+                </ActiveLink>
                 <nav>
                     <ActiveLink activeClassName="active" href='/'>
                         <a>LINK 1</a>

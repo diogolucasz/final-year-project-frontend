@@ -7,15 +7,9 @@ export interface Post {
     message: string;
     subject: string;
     user_id: string;
-    // owner: Owner;
 }
 
-// interface Owner {
-//     id: number;
-//     login: string
-// }
-
-export function PostItem({ id, message, subject, user_id }: Post) {
+export function PostItem({ id, message, subject, user_id, }: Post) {
 
     return (
         <Container>

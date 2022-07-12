@@ -4,24 +4,20 @@ import { AuthTokenError } from "../errors/AuthTokenError";
 import decode from 'jwt-decode';
 import { validatePermissions } from "./validatePermissions";
 
-interface withSSRAuthOptions {
+interface WithSSRAuthOptions {
     permissions?: string[],
     roles?: string[],
 }
 
-
-export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: withSSRAuthOptions) {
-
+export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthOptions) {
     return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
-
         const cookies = parseCookies(ctx);
-        const token = (cookies['fyp.token'])
+        const token = cookies['fyp.token'];
 
         if (!token) {
-
             return {
                 redirect: {
-                    destination: '/signin',
+                    destination: '/',
                     permanent: false,
                 }
             }
@@ -29,14 +25,18 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: withSSRAuthO
 
         if (options) {
             const user = decode<{ permissions: string[], roles: string[] }>(token);
-            const { permissions, roles } = options;
+            const { permissions, roles } = options
 
-            const userHasPermissions = validatePermissions({ user, permissions, roles })
+            const userHasValidPermissions = validatePermissions({
+                user,
+                permissions,
+                roles
+            })
 
-            if (!userHasPermissions) {
-                return{
+            if (!userHasValidPermissions) {
+                return {
                     redirect: {
-                        destination: '/dashboard',
+                        destination: '/feed',
                         permanent: false,
                     }
                 }
@@ -44,19 +44,14 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: withSSRAuthO
         }
 
         try {
-
-            return await fn(ctx);
-
-        } catch (error) {
-
-            if (error instanceof AuthTokenError) {
-
-                destroyCookie(ctx, 'fyp.token');
-                destroyCookie(ctx, 'fyp.refreshToken');
+            return await fn(ctx)
+        } catch (err) {
+            if (err instanceof AuthTokenError) {
+                destroyCookie(ctx, 'fyp.token')
+                destroyCookie(ctx, 'fyp.refresh_token')
 
                 return {
                     redirect: {
-
                         destination: '/',
                         permanent: false,
                     }

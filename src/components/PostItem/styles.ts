@@ -4,7 +4,7 @@ export const Container = styled.article`
 
     width: 100%;
     margin: 2rem 1rem;
-    background: var(--blue-700);
+    background: var(--dark-blue);
     border: 1px solid var(--color-line-in-white);
     border-radius: 0.3rem;
    

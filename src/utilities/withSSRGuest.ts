@@ -11,7 +11,7 @@ export function withSSRGuest<P>(fn: GetServerSideProps<P>) {
 
             return {
                 redirect: {
-                    destination: '/dashboard',
+                    destination: '/feed',
                     permanent: false,
                 }
             }

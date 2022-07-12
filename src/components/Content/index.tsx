@@ -1,7 +1,4 @@
-import { useQuery } from "react-query";
-import { api } from "../../services/apiClient";
-import { useFetch } from "../../services/hooks/useFetchPosts";
-import { PostItem } from "../Post";
+import { PostItem } from "../PostItem";
 import { Container } from "./style";
 
 export interface Post {
@@ -18,7 +15,7 @@ interface ContentProps {
 	error: string
 }
 
-export default function Content({posts,error,isLoading}:ContentProps) {
+export default function Content({ posts, error, isLoading }: ContentProps) {
 
 	// const { data: posts, isLoading, error } = useQuery<Post[]>('posts', async () => {
 
@@ -51,8 +48,12 @@ export default function Content({posts,error,isLoading}:ContentProps) {
 				<h1>errp</h1>
 			) : (
 				<>
-					{posts?.map(post => {
-						<PostItem key={post.id} {...post} />
+					{data?.map(post => {
+						return (
+							// <li key={post.id}>{post.id}</li>
+							<PostItem key={post.id} {...post} />
+						)
+						// <PostItem key={post.id} {...post} />
 					})}
 				</>
 			)}

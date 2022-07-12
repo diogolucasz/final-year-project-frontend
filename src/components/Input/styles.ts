@@ -34,3 +34,7 @@ export const Container = styled.div`
     }
    
 `
+export const Error = styled.div`
+    color: red;
+    margin: 3px 0 1px;
+`

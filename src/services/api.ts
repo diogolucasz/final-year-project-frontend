@@ -25,13 +25,9 @@ export function setupAPIClient(ctx = undefined) {
     
             if (error.response.data?.message === 'Invalid token!') {
     
-                console.log('entrou aqui')
                 cookies = parseCookies(ctx);
     
                 const { 'fyp.refresh_token': oldToken } = cookies
-                // const { 'fyp.token': token } = cookies
-
-                // console.log(refreshToken)
     
                 const originalConfig = error.config;
     
@@ -68,8 +64,6 @@ export function setupAPIClient(ctx = undefined) {
                         failedRequestsQueue.forEach(request => request.reject(error));
                         failedRequestsQueue = [];
     
-                        console.log(error)
-
                         if (process.browser) {
                             signOut();
                         }

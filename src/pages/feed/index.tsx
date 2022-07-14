@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import Aside from "../../components/Aside";
-import { Post } from "../../components/Content";
+//import { Post } from "../../components/Content";
 import { Header } from "../../components/Header";
-import { PostItem } from "../../components/PostItem";
+import { PostItem, Post } from "../../components/PostItem";
 import { useFetch } from "../../services/hooks/useFetch";
 import { Container } from "./styles";
 

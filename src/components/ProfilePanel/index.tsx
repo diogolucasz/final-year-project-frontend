@@ -16,7 +16,7 @@ export function ProfilePanel() {
                     alt="Avatar"
                     className="profile-picture"
                 />
-                <h1>{user?.name}</h1>
+                <h1>{`${user?.name} ${user?.surname}`}</h1>
                 <h2>Software Engineer @ Rocketseat</h2>
 
                 <div className="separator"/>

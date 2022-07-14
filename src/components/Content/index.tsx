@@ -48,7 +48,7 @@ export default function Content({ posts, error, isLoading }: ContentProps) {
 				<h1>errp</h1>
 			) : (
 				<>
-					{data?.map(post => {
+					{posts?.map(post => {
 						return (
 							// <li key={post.id}>{post.id}</li>
 							<PostItem key={post.id} {...post} />

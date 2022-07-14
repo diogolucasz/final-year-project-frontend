@@ -3,10 +3,11 @@ import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/apiClient";
 
-interface User {
+interface IUser {
     id?: string,
-    name?: string,
-    email?: string,
+    name: string,
+    surname: string,
+    email: string,
     permissions?: string[];
     roles?: string[];
 }
@@ -19,7 +20,7 @@ interface SignInData {
 interface AuthContextData {
     signIn: (data: SignInData) => Promise<void>;
     signOut: () => void;
-    user: User;
+    user: IUser;
     isAuthenticated: boolean;
 }
 
@@ -43,7 +44,7 @@ export function signOut() {
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<IUser>();
     const isAuthenticated = !!user;
 
     useEffect(() => {
@@ -70,9 +71,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             api.get('/users/me').then(response => {
 
-                const { email, name, permissions, roles } = response.data;
+                const { email, name, surname, permissions, roles } = response.data;
 
-                setUser({ email,name, permissions, roles })
+                setUser({ email,name, surname, permissions, roles })
 
             }).catch(() => {
                 signOut();
@@ -90,10 +91,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 password,
             })
 
-            const { token, refresh_token, permissions, roles } = response.data;
+            const { name, surname,token, refresh_token, permissions, roles } = response.data;
 
             setUser({
                 email,
+                name,
+                surname,
                 roles,
                 permissions,
             })
@@ -108,7 +111,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 path: '/',
             });
 
-            api.defaults.headers['Authorization'] = `Bearer ${token}`
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             Router.push('/dashboard')
 

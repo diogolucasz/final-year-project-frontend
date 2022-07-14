@@ -2,14 +2,21 @@ import React from 'react';
 import { Container } from './styles';
 
 
+export interface User {
+    username: string,
+    name: string,
+    surname: string
+}
+
 export interface Post {
     id: number;
     message: string;
     subject: string;
-    user_id: string;
+    //user_id: string;
+    user: User
 }
 
-export function PostItem({ id, message, subject, user_id, }: Post) {
+export function PostItem(post: Post) {
 
     return (
         <Container>
@@ -18,14 +25,14 @@ export function PostItem({ id, message, subject, user_id, }: Post) {
                 {/* <img src="https://github.com/guilhermerodz.png" alt="<dasasdsasda" /> */}
                 <div>
                     {/* <strong>{teacher.name}</strong> */}
-                    <strong>{id}</strong>
-                    <span>{subject}</span>
-                    <span>{user_id}</span>
+                    <strong>{post.subject}</strong>
+                    <span>{post.user.username}</span>
+                    <span>{`${post.user.name} ${post.user.surname}}`}</span>
                 </div>
             </header>
             {/* <p>{teacher.bio}</p> */}
             <div>
-                <p>{message}</p>
+                <p>{post.message}</p>
             </div>
             <footer>
                 <p>

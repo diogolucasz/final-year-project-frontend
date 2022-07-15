@@ -4,11 +4,9 @@ export const Container = styled.div`
 
     background: var(--blue-700);
     padding: 1rem;
-
+    margin-left: 1rem;
     border-radius: 0.7rem;
-    /* border: 0.1rem solid ; */
     width: 100%;
-    /* color: aliceblue; */
 
     display: flex;
     align-items: center;

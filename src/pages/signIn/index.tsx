@@ -12,7 +12,7 @@ import { GetServerSideProps } from "next/types";
 import { parseCookies } from "nookies";
 import { withSSRGuest } from "../../utilities/withSSRGuest";
 
-interface SignInData {
+export interface SignInData {
     email: string,
     password: string
 }
@@ -44,14 +44,7 @@ export default function SignIn() {
         } catch (error) {
             console.error(error)
         }
-        // event.preventDefault()
 
-        // const data = {
-        //     email,
-        //     password
-        // }
-
-        // console.log(data)
 
         await signIn(data);
     }, [signIn]);
@@ -81,7 +74,7 @@ export default function SignIn() {
 
 export const getServerSideProps = withSSRGuest(async (ctx) => {
 
-    return { 
+    return {
         props: {},
     }
 

@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.header`
     background: var(--dark-blue);
-    height: 5rem;
+    height: 6rem;
     position: fixed;
     display: flex;
     justify-content: center;
     width: 100%;
     top: 0px;
-    //ox-shadow: var(--dark-blue) 0px 1rem 1.25rem;
 `
 
 export const Content = styled.div`
     width: 100%;
     max-width: 1280px;
     
+
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -33,6 +33,7 @@ export const Content = styled.div`
             height: 5rem;
             line-height: 5rem;
             color: var(--gray-100);
+            font-family: 'Inter', sans-serif;
 
             transition: color 0.2s;
 
@@ -44,20 +45,20 @@ export const Content = styled.div`
                 color: var(--white);
             }
 
-            &:active {
+            &.active {
                 font-weight: bold;
                 color: var(--white);
             }
 
-            &:active::after {
+            &.active::after {
                 content: '';
-                height: 3px;
-                border-radius: 3px;
+                height: 0.1rem;
+                border-radius: 0.1rem;
                 width: 100%;
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                background: var(--white);
+                background: red;
             }
         }
     }

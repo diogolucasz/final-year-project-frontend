@@ -12,3 +12,4 @@ export function useFetch<Data = any, Error = any>(url: string) {
 
 	return { data, isLoading: !error && !data, error, mutate }
 }
+

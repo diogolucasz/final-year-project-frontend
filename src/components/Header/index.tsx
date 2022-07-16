@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { ActiveLink } from "../ActiveLink";
 import { ButtonsArea, Container, Content, UserController, UserInfo } from "./styles";
 import { FaBeer } from 'react-icons/fa';
+import { RiAdminLine } from 'react-icons/ri'
 
 
 export function Header() {
@@ -33,6 +34,9 @@ export function Header() {
                         <ButtonsArea>
                             <button type="button">
                                 <FaBeer />
+                            </button>
+                            <button type="button">
+                                <RiAdminLine />
                             </button>
                         </ButtonsArea>
                         {user ? (

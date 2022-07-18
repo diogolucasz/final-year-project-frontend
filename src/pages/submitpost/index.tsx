@@ -62,22 +62,6 @@ export default function SubmitPost() {
                     </FormContainer>
                 </Content>
             </Container>
-            {/* <h1>sasasa</h1> */}
-            {/* <Container>
-                <FormContainer>
-
-                    <h1>ihsadisajisa</h1>
-
-
-                    <select>
-                        {courses.map((course) => {
-                            return <option key={course.id} value={course.id}>{course.name}</option>
-                        })}
-                    </select>
-                </FormContainer>
-
-
-            </Container> */}
         </>
     );
 }

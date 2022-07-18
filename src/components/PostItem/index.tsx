@@ -5,14 +5,15 @@ import { Container } from './styles';
 export interface User {
     username: string,
     name: string,
-    surname: string
+    surname: string,
+    email: string,
 }
 
 export interface Post {
     id: number;
     message: string;
     subject: string;
-    //user_id: string;
+    user_id: string;
     user: User
 }
 
@@ -30,16 +31,10 @@ export function PostItem(post: Post) {
                     <span>{`${post.user.name} ${post.user.surname}}`}</span>
                 </div>
             </header>
-            {/* <p>{teacher.bio}</p> */}
             <div>
                 <p>{post.message}</p>
             </div>
             <footer>
-                <p>
-                    Preço/hora
-                    {/* //<strong>R$ {teacher.cost}</strong> */}
-                    <strong>R$ 69</strong>
-                </p>
                 <a
                 // onClick={createNewConnection}
                 // href={`https://wa.me/${teacher.whatsapp}`}

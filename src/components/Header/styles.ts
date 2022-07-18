@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    background: var(--dark-blue);
+    background: var(--blue-900);
     height: 6rem;
     position: fixed;
     display: flex;
@@ -58,7 +58,7 @@ export const Content = styled.div`
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                background: red;
+                background: var(--blue-300);
             }
         }
     }
@@ -77,6 +77,7 @@ export const UserController = styled.div`
 `
 export const ButtonsArea = styled.div`
     /* margin-left: auto; */
+    display: flex;
    margin-right: 4rem;
 `
 
@@ -101,4 +102,3 @@ export const UserInfo = styled.div`
         }
     }
 `
-// https://andromeda.rocketseat.dev/?path=/story/docs-colors--page

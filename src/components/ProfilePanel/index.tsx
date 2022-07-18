@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
-import { Container, Panel } from './styles';
+import { Container } from './styles';
 
 export function ProfilePanel() {
 
     const { user, signOut } = useContext(AuthContext);
 
     return (
-        <Panel>
+       
             <Container className="left-column">
                 <div className="profile-cover"></div>
                 <img
@@ -17,14 +17,10 @@ export function ProfilePanel() {
                     className="profile-picture"
                 />
                 <h1>{`${user?.name} ${user?.surname}`}</h1>
-                <h2>Software Engineer @ Rocketseat</h2>
-
                 <div className="separator"/>
-                
-                    
-                
+                <h2>Software Engineer @ Rocketseat</h2>
             </Container>
-        </Panel>
+      
     );
 };
 

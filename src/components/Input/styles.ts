@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
-    background: var(--blue-700);
+    background: var(--blue-900);
     padding: 1rem;
-    margin-left: 1rem;
-    border-radius: 0.7rem;
+    margin: 0.2rem 0.2rem;
+    border-radius: 0.3rem;
     width: 100%;
 
     display: flex;
@@ -22,9 +22,8 @@ export const Container = styled.div`
         color: white;
 
         &::placeholder {
-            color: antiquewhite;
+            color: var(--white);
         }
-
     }
 
     > svg {
@@ -34,5 +33,5 @@ export const Container = styled.div`
 `
 export const Error = styled.div`
     color: red;
-    margin: 3px 0 1px;
+    margin: 0.2rem 0.2rem;
 `

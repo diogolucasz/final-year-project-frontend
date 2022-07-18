@@ -1,37 +1,34 @@
 import styled from 'styled-components';
+import background from '../../../public/images/background.svg';
 
 export const Container = styled.div`
+    height: 100vh;
+
+    display: flex;
+    align-items: stretch;
+`
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+
     width: 100%;
-    height: 100%;
+    max-width: 720px;
 
-    /* main {
-        max-width: 1280px;
-        margin: 200px auto 60px;
-        padding: 0px 30px;
-        display: flex;
-        align-items: flex-start;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        z-index: 2;
-    } */
+    form {
+        margin: 80px 0;
+        width: 360px;
+        text-align: center;
 
-    /* @media (min-width: 1180px) {
-
-        > main {
-            margin: 0 30px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .left-column {
-            display: unset;
+        h1{
+            margin-bottom: 2rem;
         }
     }
-
-    .profile-panel {
-        display: none;
-    } */
-
-    
+`
+export const Background = styled.div`
+    flex: 1;
+    background: url(${background}) no-repeat center;
+    background-size: cover;
 `

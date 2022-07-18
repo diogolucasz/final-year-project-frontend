@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Links = styled.section`
 
     display: grid;
+    //position: sticky;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;

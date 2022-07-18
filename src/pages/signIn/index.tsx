@@ -11,6 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { GetServerSideProps } from "next/types";
 import { parseCookies } from "nookies";
 import { withSSRGuest } from "../../utilities/withSSRGuest";
+import { Background, Container, Content } from "./styles";
 
 export interface SignInData {
     email: string,
@@ -50,25 +51,31 @@ export default function SignIn() {
     }, [signIn]);
 
     return (
-        // <Container>
-        <form onSubmit={handleSubmit(handleSignIn)}>
-            <Input
-                {...register('email')}
-                name="email"
-                icon={FiMail}
-                placeholder="E-mail"
-                error={errors.email}
-            />
-            <Input
-                {...register('password')}
-                name="password"
-                icon={FiLock}
-                placeholder="Password"
-                error={errors.password}
-            />
-            <Button type="submit">Entrar</Button>
-        </form>
-        // </Container>
+        <Container>
+            <Content>
+                <img src="/images/logo.png" height={180} alt="logo ISLA" />
+                <form onSubmit={handleSubmit(handleSignIn)}>
+                    <h1>Login</h1>
+                    <Input
+                        {...register('email')}
+                        name="email"
+                        icon={FiMail}
+                        placeholder="E-mail"
+                        error={errors.email}
+                    />
+                    <Input
+                        {...register('password')}
+                        name="password"
+                        icon={FiLock}
+                        placeholder="Password"
+                        error={errors.password}
+                    />
+                    <Button type="submit">Entrar</Button>
+                    <a href="">Esqueceste-te da password?</a>
+                </form>
+            </Content>
+            <Background />
+        </Container>
     )
 }
 

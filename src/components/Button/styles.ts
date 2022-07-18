@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-    background: var(--dark-blue);
+    background: var(--blue-300);
     height: 3rem;
-    border-radius: 0.7rem;
+    //width: 300px;
+    border-radius: 1rem;
     border: 0;
-    padding: 0 1rem;
-    color: var(--rosa);
+    padding: 1rem ;
+    color: var(--white);
     width: 100%;
     font-weight: 500;
-    margin-top: 1rem;
+    //margin-top: 1rem;
+    
+    a {
+        align-items: center;
+    }
 `

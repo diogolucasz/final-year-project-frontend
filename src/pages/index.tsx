@@ -12,7 +12,7 @@ export default function Home() {
           <p>asdmsadosakdoaskdoaskod <br/></p>
         </section>
         
-        <img src="/images/coding.png" height="360" alt="computer" />
+        <img src="/images/coding.svg" height="360" alt="computer" />
       </Container>
     </>
   )

@@ -4,7 +4,7 @@ export default function SocialPanel() {
     return (
         <Links>
             <div>
-                <img src="./assets/map-pin.svg" alt="Localização" />
+                
                 <a>São Paulo, Brasil</a>
             </div>
             <div>
@@ -18,14 +18,6 @@ export default function SocialPanel() {
             <div>
                 <img src="./assets/linkedin.svg" alt="LinkedIn" />
                 <a>https://www.linkedin.com/in/phelipe-omena/</a>
-            </div>
-            <div>
-                <img src="./assets/twitter.svg" alt="Twitter" />
-                <a>phelipe-omena</a>
-            </div>
-            <div>
-                <img src="./assets/globe.svg" alt="Site" />
-                <a>https://www.omena.com.br</a>
             </div>
             <div>
                 <img src="./assets/mail.svg" alt="Email" />

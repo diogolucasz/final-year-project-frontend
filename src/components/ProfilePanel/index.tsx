@@ -18,7 +18,7 @@ export function ProfilePanel() {
                 />
                 <h1>{`${user?.name} ${user?.surname}`}</h1>
                 <div className="separator"/>
-                <h2>Software Engineer @ Rocketseat</h2>
+                <h2>Engenharia Informatica</h2>
             </Container>
       
     );

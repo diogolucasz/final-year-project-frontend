@@ -7,6 +7,7 @@ import { FaBeer } from 'react-icons/fa';
 import { RiAdminLine } from 'react-icons/ri'
 import Button from "../Button";
 import Link from "next/link";
+import { Avatar } from "@chakra-ui/react";
 
 
 export function Header() {
@@ -35,6 +36,13 @@ export function Header() {
                         ) : null
                     }
                     {
+                        !user ? (
+                            <ActiveLink activeClassName="active" href='/about'>
+                                <a>Sobre o projecto</a>
+                            </ActiveLink>
+                        ) : null
+                    }
+                    {
                         user ? (
                             <ActiveLink activeClassName="active" href='/feed'>
                                 <a>Feed</a>
@@ -48,32 +56,34 @@ export function Header() {
                             </ActiveLink>
                         ) : null
                     }
-                    <ActiveLink activeClassName="active" href='/dashboard'>
-                        <a>LINK 2</a>
-                    </ActiveLink>
                 </nav>
                 <UserController>
-
-                    <ButtonsArea>
-                        <button onClick={signOut}>
-                            <FaBeer />
-                        </button>
-                        <button type="button">
-                            <RiAdminLine />
-                        </button>
-                    </ButtonsArea>
                     {user ? (
-                        <UserInfo>
-                            <span>Bem-vindo,</span>
-                            <div>
-                                <strong>{user?.name}</strong>
-                                <span>{user?.email}</span>
-                            </div>
-                        </UserInfo>
+                        <>
+                            {/* <ButtonsArea>
+                                <button onClick={signOut}>
+                                    <FaBeer />
+                                </button>
+                                <ActiveLink activeClassName="active" href='/dashboard'>
+                                    <a>
+                                        <RiAdminLine />
+                                    </a>
+                                </ActiveLink>
+                                <button type="button">
+                                    <RiAdminLine />
+                                </button>
+                            </ButtonsArea> */}
+                            <UserInfo>
+                                <span>Bem-vindo!</span>
+                                <div>
+                                    <strong>{user?.name} {user?.surname}</strong>
+                                </div>
+                            </UserInfo>
+                        </>
                     ) : (
                         <Button>
                             <Link href="/signin">
-                                <a>Iniciar seção</a>
+                                <a>Iniciar sessão</a>
                             </Link>
                         </Button>
                     )}

@@ -1,17 +1,19 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import { useForm } from "react-hook-form";
-import { FiLock, FiMail } from "react-icons/fi";
+import { FiLock, FiMail, FiSearch } from "react-icons/fi";
 import Aside from "../../components/Aside";
 //import { Post } from "../../components/Content";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { PostItem, Post } from "../../components/PostItem";
 import { useFetch } from "../../services/hooks/useFetch";
-import { Container, Content } from "./styles";
+import { ButtonSearch, Container, Content, Loading } from "./styles";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignInData } from "../signin";
+import { toast } from "react-toastify";
+import Button from "../../components/Button";
 
 export default function Feed() {
 
@@ -36,31 +38,34 @@ export default function Feed() {
 						<Input
 							//{...register('email')}
 							name="email"
-							icon={FiMail}
-							placeholder="E-mail"
+							// icon={FiMail}
+							placeholder="Titulo"
 							error={errors.email}
 						/>
 						<Input
 							//{...register('password')}
 							name="password"
-							icon={FiLock}
-							placeholder="Password"
+							// icon={FiLock}
+							placeholder="Curso"
 							error={errors.password}
 						/>
 						<Input
 							//{...register('password')}
 							name="password"
-							icon={FiLock}
-							placeholder="Password"
+							// icon={FiLock}
+							placeholder="Aluno"
 							error={errors.password}
 						/>
+						<ButtonSearch>
+							<FiSearch />
+						</ButtonSearch>
 					</form>
-					<div>
 
+					<div>
 						{isLoading ? (
-							<h1>good</h1>
+							<Loading />
 						) : error ? (
-							<h1>errp</h1>
+							toast.error(`Ocorreu o erro ${error}`)
 						) : (
 							<>
 								{data?.map(post => {
@@ -71,23 +76,8 @@ export default function Feed() {
 							</>
 						)}
 					</div>
-				</Content>
-				{/* <div>
 
-					{isLoading ? (
-						<h1>good</h1>
-					) : error ? (
-						<h1>errp</h1>
-					) : (
-						<>
-							{data?.map(post => {
-								return (
-									<PostItem key={post.id} {...post} />
-								)
-							})}
-						</>
-					)}
-				</div> */}
+				</Content>
 
 			</main>
 		</Container>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { validatePermissions } from "../utilities/validatePermissions";
+import { AuthContext } from "../../context/AuthContext";
+import { validatePermissions } from "../../utilities/validatePermissions";
 
 interface useCanProps {
     permissions?: string[];

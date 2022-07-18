@@ -1,17 +1,19 @@
 import styled from "styled-components";
+import Button from "../Button";
 
 export const Container = styled.article`
 
-    width: 100%;
+    width: 95%;
     margin: 2rem 2rem;
     background: var(--blue-900);
-    border: 1px solid var(--white);
+    border: 1px solid var(--grey-900);
     border-radius: 1rem;
+    max-height: 400px;
    
     header {
         display: flex;
         align-items: center;
-        padding: 3.2rem 2rem;
+    }   
         
         img {
             width: 8rem;
@@ -20,66 +22,39 @@ export const Container = styled.article`
         }
 
         div {
-            margin-left: 2.4rem;
+            margin-left: 1rem;
 
             strong {
                 display: block;
-                size: 24px;
-                line-height: 1.25;
-                /* font: 700 2.4rem Archivo; */
+                size: 2rem;
+                line-height: 2;
                 color: var(--white);
+                margin-left: 1rem;
             }
 
             span {
                 display: block;
-                margin-top: .4rem;
+                margin-top: 1rem;
                 font-size: 1.6rem;
+                margin-left: 1rem;
+            }
+
+            p {
+                margin-left: 1rem;
+                margin-top: 1rem;
+                /* padding: 1rem 2rem; */
+                font-size: 1rem;
+                line-height: 2rem;
             }
         }
-    }
+        
 
-
-    p {
-        padding: 0 2rem;
-        font-size: 1.6rem;
-        line-height: 2.8rem;
-    }
-
-    footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 3.2rem;
-        padding: 3.2rem 2rem;
-        background: var(--grey-900);
-        border-top: 1px solid var(--color-line-in-white);
-
-        p > strong {
-            display: block;
-            font-size: 1.6rem;
-            color: var(--rosa);
-        }
-
-        a {
+        footer {
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
-            width: 20rem;
-            height: 5.6rem;
-            font: 700 1.4rem;
-            text-decoration: none;
-            color: var(--color-button-text);
-            background: var(--color-secondary);
-            border: 0;
-            border-radius: .8rem;
-            transition: .2s;
-            cursor: pointer;
+            justify-content: space-between;
         }
-
-        a:hover {
-            background-color: var(--color-secondary-dark);
-        }
-    }
+    
 
     @media (min-width: 700px) {
     header,
@@ -106,4 +81,14 @@ export const Container = styled.article`
         margin-right: 1.6rem;
     }
 }
+`
+
+export const ButtonCustom = styled(Button)`
+    background: var(--gray-900);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+`
+
+export const ButtonFake = styled(Button)`
+    background: transparent;
 `

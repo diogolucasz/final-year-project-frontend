@@ -1,18 +1,18 @@
+import Image from 'next/image'
 import { Header } from '../components/Header'
-import { Container } from './index/styles'
+import { ButtonHome, Container } from './index/styles'
 
 export default function Home() {
   return (
     <>
       <Header />
       <Container>
-        <section>
-          <span>Bem Vindo</span>
-          <h1>Plataforma de ajuda <span>ISLA</span></h1>
-          <p>asdmsadosakdoaskdoaskod <br/></p>
-        </section>
-        
-        <img src="/images/coding.svg" height="360" alt="computer" />
+        <main>
+          <h1>Plataforma de estudo ISLA - IPGT</h1>
+          <p>Projecto com o foco de cada aluno desenvolver o seu <span>&lt;Plano/&gt;</span> de desenvolvimento</p>
+          <ButtonHome>Sabe mais sobre o projecto!</ButtonHome>
+        </main>
+        <Image src="/images/coding.svg" height="360" width="400" alt="computer" />
       </Container>
     </>
   )

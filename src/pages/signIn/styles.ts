@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import background from '../../../public/images/background.svg';
+import Button from '../../components/Button';
+import background from '../../../public/images/isla.png'
 
 export const Container = styled.div`
     height: 100vh;
@@ -27,8 +28,13 @@ export const Content = styled.div`
         }
     }
 `
+
 export const Background = styled.div`
     flex: 1;
-    background: url(${background}) no-repeat center;
-    background-size: cover;
+    background-image:  url(background);
+`
+
+export const ButtonLogin = styled(Button)`
+    margin: 1rem 0 1rem 0;
+    width: 100%;
 `

@@ -11,10 +11,6 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
 
-    & + div {
-        margin-top: 0.5rem;
-    }
-
     input {
         flex: 1;
         background: transparent;

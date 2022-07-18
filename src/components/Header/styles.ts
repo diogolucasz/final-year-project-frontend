@@ -75,16 +75,15 @@ export const UserController = styled.div`
     margin-left: auto;
     align-items: center;
 `
+
 export const ButtonsArea = styled.div`
-    /* margin-left: auto; */
     display: flex;
-   margin-right: 4rem;
+    margin-right: 4rem;
 `
 
 export const UserInfo = styled.div`
     display: flex;
     flex-direction: column;
-    //margin-left: 4rem;
     justify-content: space-between;
     margin-left: auto;
 

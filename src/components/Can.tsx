@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useCan } from "../hook/useCan";
+import { useCan } from "../services/hooks/useCan";
 
 
 interface CanProps {

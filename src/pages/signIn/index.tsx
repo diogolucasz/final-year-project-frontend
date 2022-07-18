@@ -1,17 +1,14 @@
 import { useCallback, useContext } from "react"
 import { AuthContext } from "../../context/AuthContext";
-
 import { FiLock, FiMail } from 'react-icons/fi'
 
 import { useForm } from 'react-hook-form';
-import Button from "../../components/Button";
 import { Input } from "../../components/Input";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { GetServerSideProps } from "next/types";
-import { parseCookies } from "nookies";
 import { withSSRGuest } from "../../utilities/withSSRGuest";
-import { Background, Container, Content } from "./styles";
+import { Background, ButtonLogin, Container, Content } from "./styles";
+
 
 export interface SignInData {
     email: string,
@@ -26,6 +23,8 @@ export default function SignIn() {
         email: Yup.string().required('E-mail obrigatorio').email('Digite um e-mail válido'),
         password: Yup.string().required('Password obrigatoria'),
     })
+
+    
 
     const { register, handleSubmit, formState: { errors } } = useForm<SignInData>({
         resolver: yupResolver(schema)
@@ -43,7 +42,7 @@ export default function SignIn() {
             await schema.validate(data)
 
         } catch (error) {
-            console.error(error)
+            console.log(error)
         }
 
 
@@ -70,11 +69,12 @@ export default function SignIn() {
                         placeholder="Password"
                         error={errors.password}
                     />
-                    <Button type="submit">Entrar</Button>
+                    <ButtonLogin type="submit">Entrar</ButtonLogin>
                     <a href="">Esqueceste-te da password?</a>
                 </form>
             </Content>
             <Background />
+
         </Container>
     )
 }

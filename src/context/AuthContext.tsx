@@ -1,6 +1,7 @@
 import Router from "next/router";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { api } from "../services/apiClient";
 
 interface IUser {
@@ -113,10 +114,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
             api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-            Router.push('/dashboard')
+            Router.push('/feed')
 
         } catch (error) {
-            alert(`${error}`)
+            toast.error(`Utilizador ou password incorretas`)
         }
     }
 

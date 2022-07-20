@@ -34,11 +34,6 @@ export default function SignIn() {
 
         try {
 
-            const schema = Yup.object().shape({
-                email: Yup.string().required('E-mail obrigatorio').email('Digite um e-mail válido'),
-                password: Yup.string().required('Password obrigatoria'),
-            })
-
             await schema.validate(data)
 
         } catch (error) {

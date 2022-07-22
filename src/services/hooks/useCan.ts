@@ -3,8 +3,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { validatePermissions } from "../../utilities/validatePermissions";
 
 interface useCanProps {
-    permissions?: string[];
-    roles?: string[];
+    permissions: string[];
+    roles: string[];
 }
 
 
@@ -20,3 +20,4 @@ export function useCan({ permissions, roles }: useCanProps) {
 
     return userHasPermissions;
 }
+

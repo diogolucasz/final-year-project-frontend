@@ -9,15 +9,12 @@ export default function Teste() {
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
 
-   const apiClient = setupAPIClient(ctx);
-
-   const response = await apiClient.get('/me')
-
-
     return {
         props: {}
     }
 }, {
-    permissions: ['metrics.lisdfgfdgt'],
+    permissions: ['users.list'],
     roles: ['administrator'],
 })
+
+

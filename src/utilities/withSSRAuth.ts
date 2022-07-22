@@ -5,12 +5,14 @@ import decode from 'jwt-decode';
 import { validatePermissions } from "./validatePermissions";
 
 interface WithSSRAuthOptions {
-    permissions?: string[],
-    roles?: string[],
+    permissions: string[],
+    roles: string[],
 }
 
-export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthOptions) {
+export function withSSRAuth<P>(fn: GetServerSideProps<P>, authParams?: WithSSRAuthOptions) {
+
     return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
+
         const cookies = parseCookies(ctx);
         const token = cookies['fyp.token'];
 
@@ -23,9 +25,11 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthO
             }
         }
 
-        if (options) {
+        if (authParams) {
+
             const user = decode<{ permissions: string[], roles: string[] }>(token);
-            const { permissions, roles } = options
+
+            const { permissions, roles } = authParams
 
             const userHasValidPermissions = validatePermissions({
                 user,
@@ -44,17 +48,23 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>, options?: WithSSRAuthO
         }
 
         try {
+
             return await fn(ctx)
+
         } catch (err) {
+
             if (err instanceof AuthTokenError) {
+
                 destroyCookie(ctx, 'fyp.token')
                 destroyCookie(ctx, 'fyp.refresh_token')
 
                 return {
+
                     redirect: {
                         destination: '/',
                         permanent: false,
                     }
+
                 }
             }
         }

@@ -53,31 +53,8 @@ export default function Dashboard() {
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
 
-    const apiClient = setupAPIClient(ctx);
-
-    const response = await apiClient.get('/users/me')
-
-    console.log(response.data)
-
-
-
-
     return {
         props: {}
     }
 })
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-
-//     const response = await fetch('https://api.github.com/users/diogolucasz/repos');
-//     //console.log(response)
-//     const data = await response.json();
-//     //console.log(data)
-//     const repositoryNames = data.map((item: string) => item.name)
-
-//     return {
-//         props: {
-//             repositories: repositoryNames
-//         }
-//     }
-// }
